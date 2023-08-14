@@ -1,14 +1,14 @@
-import Button from 'components/Button/Button'
-import { Language, LanguageContext } from 'contexts/LanguageContext'
-import i18n from 'language/i18n'
-import { useContext } from 'react'
+import Compare from 'components/Compare/Compare'
 
 export const Home = () => {
-  const { setCurrentLanguage } = useContext(LanguageContext)
+  const handleWinnerSelected = (winner: React.ReactElement) => {
+    console.log('Winner selected:', winner)
+  }
+
   return (
-    <div>
-      <div>{i18n.t('greeting')}</div>
-      <Button onClick={() => setCurrentLanguage(Language.FR)}> {i18n.t('changeLanguage')}</Button>
-    </div>
+    <Compare
+      comparedComponents={[<div key="1">Component 1</div>, <div key="2">Component 2</div>]}
+      onWinnerSelected={handleWinnerSelected}
+    />
   )
 }
